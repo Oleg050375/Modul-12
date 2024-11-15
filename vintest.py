@@ -3,18 +3,23 @@ import unittest
 
 
 class RunnerTest(unittest.TestCase):  # тестовый класс
+    is_frozen = False  # атрибут заморозки тестов
+
+    @unittest.skipIf(is_frozen, 'Тесты в этом кейсе заморожены')
     def test_walk(self):
         obj1 = runner.Runner('cup')
         for i in range(10):
             obj1.walk()
         self.assertEqual(obj1.distance, 50)
 
+    @unittest.skipIf(is_frozen, 'Тесты в этом кейсе заморожены')
     def test_run(self):
         obj2 = runner.Runner('table')
         for i in range(10):
             obj2.run()
         self.assertEqual(obj2.distance, 100)
 
+    @unittest.skipIf(is_frozen, 'Тесты в этом кейсе заморожены')
     def test_challenge(self):
         obj3 = runner.Runner('milk')
         obj4 = runner.Runner('beer')
